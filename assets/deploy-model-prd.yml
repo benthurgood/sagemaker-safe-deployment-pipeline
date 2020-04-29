@@ -14,7 +14,7 @@ Parameters:
     Description: Id of the Codepipeline + SagemakerJobs
   MLOpsRoleArn:
     Type: String
-    Description: The role for executing the monitoring schedule
+    Description: The role for executing the deployment
   VariantName:
     Type: String
     Description: Name of the endpoint variant
@@ -298,7 +298,7 @@ Resources:
     Properties: 
       PolicyName: SageMakerVariantInvocationsPerInstance
       PolicyType: TargetTrackingScaling
-      ResourceId: !Sub endpoint/mlops-${ModelName}-prd-${TrainJobId}/variant/${VariantName}
+      ResourceId: !Sub endpoint/mlops-${ModelName}-prd-${TrainJobId}/variant/${ModelName}${VariantName}
       ScalableDimension: sagemaker:variant:DesiredInstanceCount
       ServiceNamespace: sagemaker
       TargetTrackingScalingPolicyConfiguration:
