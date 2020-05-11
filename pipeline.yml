@@ -53,7 +53,7 @@ Resources:
   ArtifactBucket:
     Type: AWS::S3::Bucket
     Properties: 
-      BucketName: !Sub ${AWS::StackName}-artifact
+      BucketName: !Sub ${AWS::StackName}-artifact-${AWS::Region}-${AWS::AccountId}
       AccessControl: Private
       VersioningConfiguration:
         Status: Enabled
